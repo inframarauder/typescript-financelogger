@@ -6,7 +6,7 @@ export class Invoice{
         private amount : number
     ){}
 
-    printInvoice(){
+    format(){
         return `${this.client} owes Rs. ${this.amount} for ${this.details}`;
     }
 }

@@ -13,8 +13,5 @@ form.addEventListener('submit',(e:Event)=>{
     
     if(type.value === 'invoice'){
         const newInvoice = new Invoice(tofrom.value,details.value,amount.valueAsNumber);
-        alert(newInvoice.printInvoice());
-        invoices.push(newInvoice);
-        console.log(invoices);
     }
 })

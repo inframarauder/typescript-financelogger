@@ -4,7 +4,7 @@ export class Invoice {
         this.details = details;
         this.amount = amount;
     }
-    printInvoice() {
+    format() {
         return `${this.client} owes Rs. ${this.amount} for ${this.details}`;
     }
 }
