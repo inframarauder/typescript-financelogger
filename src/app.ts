@@ -14,10 +14,14 @@ form.addEventListener('submit', (e: Event) => {
 	const details = document.getElementById('details') as HTMLInputElement;
 	const amount = document.getElementById('amount') as HTMLInputElement;
 
+	const values: [string, string, number] = [
+		tofrom.value,
+		details.value,
+		amount.valueAsNumber,
+	];
+
 	const doc: HasFormatter =
-		type.value === 'invoice'
-			? new Invoice(tofrom.value, details.value, amount.valueAsNumber)
-			: new Payment(tofrom.value, details.value, amount.valueAsNumber);
+		type.value === 'invoice' ? new Invoice(...values) : new Payment(...values);
 
 	const list = new ListTemplate(ul);
 	list.render(doc, type.value, 'end');

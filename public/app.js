@@ -9,9 +9,12 @@ form.addEventListener('submit', (e) => {
     const tofrom = document.getElementById('tofrom');
     const details = document.getElementById('details');
     const amount = document.getElementById('amount');
-    const doc = type.value === 'invoice'
-        ? new Invoice(tofrom.value, details.value, amount.valueAsNumber)
-        : new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    const values = [
+        tofrom.value,
+        details.value,
+        amount.valueAsNumber,
+    ];
+    const doc = type.value === 'invoice' ? new Invoice(...values) : new Payment(...values);
     const list = new ListTemplate(ul);
     list.render(doc, type.value, 'end');
 });
