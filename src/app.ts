@@ -1,4 +1,6 @@
 import{ Invoice} from './classes/Invoice.js'
+import {Payment} from './classes/Payment.js'
+import {HasFormatter} from './interfaces/HasFormatter.js'
 
 const form = document.querySelector('form') as HTMLFormElement;
 const invoices : Invoice[] = [];
@@ -10,8 +12,8 @@ form.addEventListener('submit',(e:Event)=>{
     const tofrom = document.getElementById('tofrom') as HTMLInputElement;
     const details = document.getElementById('details') as HTMLInputElement;
     const amount = document.getElementById('amount') as HTMLInputElement;
-    
-    if(type.value === 'invoice'){
-        const newInvoice = new Invoice(tofrom.value,details.value,amount.valueAsNumber);
-    }
+    let doc : HasFormatter = (type.value === 'invoice')? 
+                            new Invoice(tofrom.value,details.value,amount.valueAsNumber)
+                            : new Payment(tofrom.value,details.value,amount.valueAsNumber);
+    console.log(doc.format());
 })

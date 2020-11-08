@@ -1,8 +1,10 @@
-export class Payment{
+import { HasFormatter } from '../interfaces/HasFormatter.js'
+
+export class Payment implements HasFormatter{
     constructor(
         private recipient:string,
         private details:string,
-        private amount:string
+        private amount:number
     ){}
 
     format(){

@@ -1,4 +1,5 @@
 import { Invoice } from './classes/Invoice.js';
+import { Payment } from './classes/Payment.js';
 const form = document.querySelector('form');
 const invoices = [];
 form.addEventListener('submit', (e) => {
@@ -7,7 +8,8 @@ form.addEventListener('submit', (e) => {
     const tofrom = document.getElementById('tofrom');
     const details = document.getElementById('details');
     const amount = document.getElementById('amount');
-    if (type.value === 'invoice') {
-        const newInvoice = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
-    }
+    let doc = (type.value === 'invoice') ?
+        new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+        : new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    console.log(doc.format());
 });
